@@ -1,12 +1,100 @@
-import React from "react";
-
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import {onAuthStateChanged } from "firebase/auth";
+import { auth } from '../utils/firebase'
+import { addUser, removeUser } from '../utils/slices/userSlice';
+import { NETFLIX_HEADER, DEFAULT_AVATAR } from "../utils/constant";
 function Header() {
-    return (
-        <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 left-0 right-0">
-            <img className="w-40" src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
-            <h1>Header</h1>
+  const userData = useSelector((state) => state.user);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const profilePic = userData?.image || DEFAULT_AVATAR;
+    
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        const email = user.email;
+        const name = user.displayName;
+        const image = user.photoURL;
+        dispatch(addUser({uid:uid, email:email, name: name, image: image}))
+        navigate("/browse")
+      } else {
+          dispatch(removeUser())
+          navigate("/");
+      }
+    });
+
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      unsubscribe();
+    }
+
+  }, []);
+
+  const dropdownRef = useRef(null);
+
+  function handleSignOut(){
+    signOut(auth)
+  }
+
+  function openProfile(){
+    navigate("/profile")
+  }
+
+  return (
+    <header className="absolute w-full bg-gradient-to-b from-black z-10">
+      <div className="w-full px-1 py-2 flex items-center justify-between">
+        {/* Netflix Logo on the left */}
+        <div>
+          <img
+            className="w-40 cursor-pointer"
+            src={NETFLIX_HEADER}
+            alt="Netflix Logo"
+            onClick={()=>navigate("/browse")}
+          />
         </div>
-    )
+        {/* Profile Icon on the right */}
+        {userData.uid && 
+            <div className="relative right-5" ref={dropdownRef}>
+            <img
+                className="w-14 h-14 rounded-full cursor-pointer object-cover"
+                src={profilePic}
+                alt="Profile"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            />
+            {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-black bg-opacity-90 rounded shadow-lg text-white transition-all duration-300 ease-in-out">
+                    <ul>
+                        <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer"  onClick={(e) => { e.stopPropagation(); openProfile();}}>
+                        Profile
+                        </li>
+                        <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+                        Settings
+                        </li>
+                        <li className="px-4 py-2 hover:bg-red-700 cursor-pointer" onClick={(e) => { e.stopPropagation(); handleSignOut();}}>
+                        Sign Out
+                        </li>
+                    </ul>
+                </div>
+            )}
+            </div>
+        }
+      </div>
+    </header>
+  );
 }
 
 export default Header;
