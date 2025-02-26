@@ -20,7 +20,7 @@ const Body = () => {
         }
     ])
   return (
-    <div>
+    <div className='no-scrollbar'>
         <RouterProvider router={appRouter}/>
     </div>
   )
