@@ -10,3 +10,8 @@ export const API_OPTIONS_TMDB = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4N2VhNjMzMzI4OWY4N2U3OWFmNmZmOGZjNTZhZDQzZSIsIm5iZiI6MTc0MDQ4NTM3NC4wNTksInN1YiI6IjY3YmRiMmZlZWY0YWUyOWRmYjJkYjZmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7YguNdhAmbEXWPbwLbUomQFy_clh7YcB-IeeKe1gS3E'
     }
   };
+export const TMDB_APIS = {
+  get_now_playing_movies: "https://api.themoviedb.org/3/movie/now_playing?page=1",
+  get_movie_video : "https://api.themoviedb.org/3/movie/{MOVIE_ID}/videos?",
+}
+export const YT_VIDEO_LINK = 'https://www.youtube.com/embed/{KEY}?&autoplay=1&mute=1';

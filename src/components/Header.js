@@ -10,7 +10,6 @@ function Header() {
   const userData = useSelector((state) => state.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const profilePic = userData?.image || DEFAULT_AVATAR;
-    
   let navigate = useNavigate();
   let dispatch = useDispatch();
 

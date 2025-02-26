@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_OPTIONS_TMDB } from '../utils/constant'
+import { API_OPTIONS_TMDB, TMDB_APIS } from '../utils/constant'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNowPlayingMovies} from '../utils/slices/movieSlice'
@@ -10,12 +10,11 @@ const useNowPlayingMovies = () => {
         const getMovies = async () => {
           try {
             const res = await fetch(
-              'https://api.themoviedb.org/3/movie/now_playing?page=1',
+              TMDB_APIS.get_now_playing_movies,
               API_OPTIONS_TMDB
             );
             const data = await res.json();
             const movies = data.results;
-            console.log(movies);
             dispatch(addNowPlayingMovies({ movie: movies }));
           } catch (error) {
             console.error("Error fetching movies: ", error);

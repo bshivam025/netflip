@@ -10,7 +10,6 @@ const Profile = () => {
   const userData = useSelector((state) => state.user);
   const profilePic = userData?.image;
   const name = userData?.name;
-  console.log("name, profileData ", name, profilePic );
   const [dispName, setDispName] = useState(name);
   const [dispImg, setDispImg] = useState(profilePic);
   const dispatch = useDispatch()
@@ -36,7 +35,7 @@ const Profile = () => {
       }).then(() => {
         dispatch(updateUserProfile({name: dispName, image: dispImg}))
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
