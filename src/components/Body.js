@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import Login from './Login'
 import Browse from './Browse'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
 import Profile from './Profile';
+import GptMovies from './GptMovies';
 const Body = () => {
     let appRouter = createBrowserRouter([
         {
@@ -17,6 +17,10 @@ const Body = () => {
         {
             path:"/profile",
             element: <Profile/>
+        },
+        {
+            path: "/gptmovies",
+            element: <GptMovies/>
         }
     ])
   return (

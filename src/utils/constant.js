@@ -23,3 +23,4 @@ export const TITLE_MAP = {
   topRatedMovies: "Top Rated"
 };
 export const TMDB_IMG_CDN = "https://image.tmdb.org/t/p/w500{IMG_HASH}"
+export const SEARCH_ICON_IMAGE = "https://www.citypng.com/public/uploads/preview/png-red-search-icon-button-701751694974779jbcfmubmn9.png";

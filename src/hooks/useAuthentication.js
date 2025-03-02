@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, signOut } from "firebase/auth";
 import { auth, provider } from '../utils/firebase';
 import { validateEmail, validateName, validatePassword } from '../utils/validate';
 import { useDispatch } from 'react-redux';
@@ -65,6 +65,10 @@ const useAuthentication = () => {
     }
   };
 
+  const handleSignOut = async() => {
+    signOut(auth)
+  }
+
   return {
     nameRef,
     emailRef,
@@ -73,7 +77,8 @@ const useAuthentication = () => {
     signUp,
     signIn,
     signInWithGoogle,
-    setErrorMsg
+    setErrorMsg,
+    handleSignOut
   };
 };
 
