@@ -13,7 +13,7 @@ const SecondaryContainer = () => {
           let title = object[0];
           let movies = object[1];
           
-          return <MovieList key={title} title={title} movies = {movies}/>
+          return title.includes('gpt') ? null : <MovieList key={title} title={title} movies = {movies}/>
         })
       }
       </div>
