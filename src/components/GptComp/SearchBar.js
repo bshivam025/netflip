@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SEARCH_ICON_IMAGE } from '../../utils/constant';
 import useLanguageFinger from '../../hooks/useLanguageFinger';
 import { LANG_TEXT } from '../../utils/langConst';
+import openai from '../../utils/openai';
 
 const SearchBar = () => {
   let language = useLanguageFinger().image;
-  console.log(LANG_TEXT[language].searchBarText);
+  const searchText = useRef(null);
+
+  function searchGpt(){
+    let text = searchText.current.value;
+    const completion = openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {"role": "user", "content": "say this is a test"}
+      ],
+    });
+    completion.then((result) => console.log(result.choices[0].message));
+  }
   return (
     <div className="flex justify-center p-[10%]">
-      <form className="w-full max-w-lg flex">
+      <form className="w-full max-w-lg flex" onSubmit={(e)=> e.preventDefault() } >
         <input
           type="text"
+          ref={searchText}
           placeholder={LANG_TEXT[language].searchBarText}
           className="w-full h-10 px-4 bg-gray-800 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 shadow-md"
         />
@@ -19,6 +32,7 @@ const SearchBar = () => {
             alt="Search"
             src={SEARCH_ICON_IMAGE}
             className="w-9 h-9"
+            onClick={()=> searchGpt() }
           />
         </button>
       </form>

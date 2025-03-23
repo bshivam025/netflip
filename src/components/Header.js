@@ -49,8 +49,8 @@ function Header() {
 
   }, []);
 
-  const dropdownRef = useRef(prefferedLanguage);
-  const languageRef = useRef(LANGUAGE_MAP[0].identifier);
+  const dropdownRef = useRef(null);
+  const languageRef = useRef(prefferedLanguage);
 
   function hangleLanguageChange() {
     dispatch(changePrefferedLanguage({language: languageRef.current.value}))
