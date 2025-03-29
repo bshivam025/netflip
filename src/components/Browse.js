@@ -14,7 +14,7 @@ const Browse = () => {
     <div>
       <div className = ''>
         <Header/>
-        <div className=''>
+        <div className='bg-black min-h-screen'>
           <MainContainer/>
           <SecondaryContainer/>
         </div>
