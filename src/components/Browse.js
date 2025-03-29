@@ -11,7 +11,7 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   return (
-    <div className='-ml-6'>
+    <div>
       <div className = ''>
         <Header/>
         <div className=''>

@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
   const selector = useSelector((store) => store.movies);
   if(!selector || selector.length == 0 || selector == {}) return;
   return (
-    <div className = 'bg-black  text-white'>
+    <div className = 'bg-black  text-white -ml-4'>
       <div className='md:-mt-30 lg:-mt-52 pl-5 relative'>
       {
         Object.entries(selector)?.map((object) =>{
