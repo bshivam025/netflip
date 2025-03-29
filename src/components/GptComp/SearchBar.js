@@ -39,7 +39,7 @@ const SearchBar = () => {
     dispatch(addGptMovies({movieResult: searchMovieData, movieNames: movieArr }))
   }
   return (
-    <div className="flex justify-center p-[10%]">
+    <div className="flex justify-center p-[10%] pt-[20%] md:pt-[10%] lg:pt-[5%] ">
       <form className="w-full max-w-lg flex" onSubmit={(e)=> e.preventDefault() } >
         <input
           type="text"

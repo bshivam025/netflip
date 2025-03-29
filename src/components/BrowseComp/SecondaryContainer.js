@@ -7,7 +7,7 @@ const SecondaryContainer = () => {
   if(!selector || selector.length == 0 || selector == {}) return;
   return (
     <div className = 'bg-black  text-white'>
-      <div className='-mt-52 pl-5 relative'>
+      <div className='md:-mt-30 lg:-mt-52 pl-5 relative'>
       {
         Object.entries(selector)?.map((object) =>{
           let title = object[0];
