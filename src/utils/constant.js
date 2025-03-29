@@ -15,6 +15,8 @@ export const TMDB_APIS = {
   get_movie_video : "https://api.themoviedb.org/3/movie/{MOVIE_ID}/videos?",
   get_popular_movies: "https://api.themoviedb.org/3/movie/popular?page=1",
   get_top_rated_movies: "https://api.themoviedb.org/3/movie/top_rated?&page=1",
+  get_search_result: "https://api.themoviedb.org/3/search/movie?query="
+
 }
 export const YT_VIDEO_LINK = 'https://www.youtube.com/embed/{KEY}?&autoplay=1&mute=1';
 export const TITLE_MAP = {

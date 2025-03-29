@@ -12,7 +12,6 @@ import useRouting from "../hooks/useRouting";
 function Header() {
   const userData = useSelector((state) => state.user);
   const prefferedLanguage = useSelector((state) => state.app?.prefferedLanguage);
-  console.log("pref : " + prefferedLanguage);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const profilePic = userData?.image || DEFAULT_AVATAR;
   let dispatch = useDispatch();

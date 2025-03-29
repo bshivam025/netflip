@@ -16,7 +16,6 @@ const VideoBackground = ({id}) => {
       let officialTrailer = filterTrailer.filter( (video) => video.name === "Official Trailer")
       selectedVid = officialTrailer.length ? officialTrailer[0] : filterTrailer[0];
     }
-    // console.log(selectedVid);
     setVideo(selectedVid);
   }
 
