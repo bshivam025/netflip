@@ -6,19 +6,21 @@ import openai from '../../utils/openai';
 import { useDispatch } from 'react-redux';
 import { addGptMovies } from '../../utils/slices/movieSlice';
 
-const SearchBar = () => {
+const SearchBar = ({setShimmer}) => {
   let language = useLanguageFinger().image;
   const searchText = useRef(null);
   let dispatch = useDispatch();
 
   async function searchMovieByName(name){
-
+    setShimmer(true);
     let searchMovieApi = TMDB_APIS.get_search_result;
     const fetchMovie = await fetch(
       searchMovieApi + name,
       API_OPTIONS_TMDB
     );
     const dataMovie = await fetchMovie.json();
+    setShimmer(false);
+
     return dataMovie;
   }
 
