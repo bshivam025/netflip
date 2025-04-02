@@ -9,13 +9,12 @@ const SecondaryContainer = () => {
     <div className = 'bg-black  text-white'>
       <div className='md:-mt-30 lg:-mt-52 pl-0 lg:pl-5 relative'>
       {
-        Object.entries(selector)?.map((object) =>{
-          let title = object[0];
-          let movies = object[1];
-          
-          return title.includes('gpt') ? null : <MovieList key={title} title={title} movies = {movies}/>
-        })
+        Object.keys(selector || {}).length > 1 &&
+        Object.entries(selector).map(([title, movies]) =>
+          title.includes("gpt") ? null : <MovieList key={title} title={title} movies={movies} />
+        )
       }
+
       </div>
     </div>
   )

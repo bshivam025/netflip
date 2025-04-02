@@ -11,8 +11,12 @@ const Body = () => {
             element: <Login/>
         },
         {
-            path: "/browse",
+            path: "/browse/:movieId",
             element: <Browse/>
+        },
+        {
+            path: "/browse",
+            element: <Browse />
         },
         {
             path:"/profile",

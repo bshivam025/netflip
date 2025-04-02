@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './BrowseComp/MainContainer'
 import SecondaryContainer from './BrowseComp/SecondaryContainer'
 import usePopularMovies from '../hooks/usePopularMovies'
 import useTopRatedMovies from '../hooks/useTopRatedMovies'
+import { useParams } from 'react-router-dom'
 
 const Browse = () => {
-  useNowPlayingMovies();
+  let { movieId } = useParams();
+  movieId = movieId ? movieId : null;
   usePopularMovies();
   useTopRatedMovies();
+  useNowPlayingMovies(movieId);
   return (
     <div>
       <div className = ''>
