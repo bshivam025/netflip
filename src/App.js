@@ -6,6 +6,7 @@ function App() {
   return (
     <Provider store={appStore}>
       <Body/>
+      <Analytics />
     </Provider>
   );
 }
