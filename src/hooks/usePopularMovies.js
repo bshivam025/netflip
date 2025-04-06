@@ -7,7 +7,10 @@ import { addPopularMovies } from '../utils/slices/movieSlice'
 const usePopularMovies = (movieId) => {
     let dispatch = useDispatch();
     useEffect(() => {
-      if(movieId) return;
+      if(movieId) {
+        dispatch(addPopularMovies({ movie: null }));
+        return;
+      }
         const getMovies = async () => {
           try {
             const res = await fetch(
@@ -23,7 +26,7 @@ const usePopularMovies = (movieId) => {
         };
     
         getMovies();
-      }, []);
+      }, [movieId]);
 }
 
 export default usePopularMovies

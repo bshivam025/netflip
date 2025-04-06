@@ -7,7 +7,10 @@ import { addTopRatedMovies } from '../utils/slices/movieSlice'
 const useTopRatedMovies = (movieId) => {
     let dispatch = useDispatch();
     useEffect(() => {
-      if(movieId) return;
+      if(movieId){
+        dispatch(addTopRatedMovies({ movie: null }));
+        return;
+      }
         const getMovies = async () => {
           try {
             const res = await fetch(
@@ -23,7 +26,7 @@ const useTopRatedMovies = (movieId) => {
         };
     
         getMovies();
-      }, []);
+      }, [movieId]);
 }
 
 export default useTopRatedMovies
