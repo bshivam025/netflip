@@ -6,10 +6,7 @@ import { useEffect } from "react";
 const useSimilarMovies = (movieId) => {
     let dispatch = useDispatch();
     useEffect(() => {
-        if (!movieId) {
-            dispatch(addSimilarMovies({ movie: null }));
-            return;
-        }
+        dispatch(addSimilarMovies({ movie: null }));
         const getMovies = async () => {
             try {
                 const res = await fetch(
@@ -23,7 +20,10 @@ const useSimilarMovies = (movieId) => {
                 console.error("Error fetching movies: ", error);
             }
         };
-        getMovies();
+
+        if(movieId) {
+            getMovies();
+        }
     }, [movieId])
 }
 

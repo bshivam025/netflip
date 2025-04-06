@@ -7,6 +7,8 @@ import { addNowPlayingMovies} from '../utils/slices/movieSlice'
 const useNowPlayingMovies = (movieId) => {
     let dispatch = useDispatch();
     useEffect(() => {
+      dispatch(addNowPlayingMovies({ movie: null }));
+
         const getMovies = async () => {
           try {
             let api = TMDB_APIS.get_now_playing_movies;
