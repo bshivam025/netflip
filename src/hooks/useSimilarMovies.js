@@ -18,7 +18,6 @@ const useSimilarMovies = (movieId) => {
                 );
                 const data = await res.json();
                 const movies = data.results;
-                console.log("🫡 ~ getMovies ~ movies:", movies);
                 dispatch(addSimilarMovies({ movie: movies }));
             } catch (error) {
                 console.error("Error fetching movies: ", error);
