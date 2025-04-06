@@ -26,6 +26,10 @@ const SearchBar = ({setShimmer}) => {
 
   async function searchGpt(){
     let text = searchText.current.value;
+    if(text === "" || text === undefined || text === null){
+      alert(LANG_TEXT[language].searchBarAlert);
+      return;
+    }
     const gptQuery = "Act as a Movie Recommendation system and suggest 5 movies for the query " + text + ". only give me names of the 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, koi mil gaya, titanic";
 
     let completion = await openai.chat.completions.create({

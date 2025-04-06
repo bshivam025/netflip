@@ -4,9 +4,10 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addTopRatedMovies } from '../utils/slices/movieSlice'
 
-const useTopRatedMovies = () => {
+const useTopRatedMovies = (movieId) => {
     let dispatch = useDispatch();
     useEffect(() => {
+      if(movieId) return;
         const getMovies = async () => {
           try {
             const res = await fetch(
