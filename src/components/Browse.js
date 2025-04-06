@@ -5,6 +5,7 @@ import MainContainer from './BrowseComp/MainContainer'
 import SecondaryContainer from './BrowseComp/SecondaryContainer'
 import usePopularMovies from '../hooks/usePopularMovies'
 import useTopRatedMovies from '../hooks/useTopRatedMovies'
+import useSimilarMovies from '../hooks/useSimilarMovies'
 import { useParams } from 'react-router-dom'
 
 const Browse = () => {
@@ -13,6 +14,7 @@ const Browse = () => {
   usePopularMovies(movieId);
   useTopRatedMovies(movieId);
   useNowPlayingMovies(movieId);
+  useSimilarMovies(movieId);
   return (
     <div>
       <div className = ''>

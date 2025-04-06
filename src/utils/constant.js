@@ -16,14 +16,16 @@ export const TMDB_APIS = {
   get_popular_movies: "https://api.themoviedb.org/3/movie/popular?page=1",
   get_top_rated_movies: "https://api.themoviedb.org/3/movie/top_rated?&page=1",
   get_search_result: "https://api.themoviedb.org/3/search/movie?query=",
-  get_movie_by_id: "https://api.themoviedb.org/3/movie/"
+  get_movie_by_id: "https://api.themoviedb.org/3/movie/",
+  get_similar_movies: "https://api.themoviedb.org/3/movie/{MOVIE_ID}/similar?language=en-US&page=1"
 
 }
 export const YT_VIDEO_LINK = 'https://www.youtube.com/embed/{KEY}?&autoplay=1&mute=1';
 export const TITLE_MAP = {
   nowPlayingMovies: "NOW PLAYING",
   popularMovies: "Popular Movies",
-  topRatedMovies: "Top Rated"
+  topRatedMovies: "Top Rated",
+  similarMovies: "Similar Movies",
 };
 export const TMDB_IMG_CDN = "https://image.tmdb.org/t/p/w500{IMG_HASH}"
 export const SEARCH_ICON_IMAGE = "https://www.citypng.com/public/uploads/preview/png-red-search-icon-button-701751694974779jbcfmubmn9.png";
