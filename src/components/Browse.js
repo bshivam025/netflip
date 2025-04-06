@@ -12,6 +12,7 @@ const Browse = () => {
   let { movieId } = useParams();
   movieId = movieId ? movieId : null;
   console.log(movieId, " is the movie id selected");
+  console.error("vercel bhai dikha de logs please");
   usePopularMovies(movieId);
   useTopRatedMovies(movieId);
   useNowPlayingMovies(movieId);
