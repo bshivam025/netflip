@@ -29,7 +29,7 @@ const useNowPlayingMovies = (movieId) => {
             }
 
             dispatch(addNowPlayingMovies({ movie: movies }));
-            window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 Scroll to top when movieId changes
+            window.scrollTo({ top: 0, behavior: "auto" }); // 👈 Scroll to top when movieId changes
 
           } catch (error) {
             console.error("Error fetching movies: ", error);

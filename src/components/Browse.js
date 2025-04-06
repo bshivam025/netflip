@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 const Browse = () => {
   let { movieId } = useParams();
   movieId = movieId ? movieId : null;
+  console.log(movieId, " is the movie id selected");
   usePopularMovies(movieId);
   useTopRatedMovies(movieId);
   useNowPlayingMovies(movieId);
