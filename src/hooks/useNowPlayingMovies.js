@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_OPTIONS_TMDB, TMDB_APIS } from '../utils/constant'
+import {  TMDB_APIS } from '../utils/constant'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNowPlayingMovies} from '../utils/slices/movieSlice'
@@ -13,7 +13,7 @@ const useNowPlayingMovies = (movieId) => {
           try {
             let api = TMDB_APIS.get_now_playing_movies;
             if (movieId) {
-              api = TMDB_APIS.get_movie_by_id + movieId + "?";
+              api = TMDB_APIS.get_movie_by_id + movieId;
             }
             const res = await fetch(api);
             let data = await res.json();

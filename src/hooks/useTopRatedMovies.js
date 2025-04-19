@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_OPTIONS_TMDB, TMDB_APIS } from '../utils/constant'
+import {  TMDB_APIS } from '../utils/constant'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addTopRatedMovies } from '../utils/slices/movieSlice'

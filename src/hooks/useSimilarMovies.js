@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { API_OPTIONS_TMDB, TMDB_APIS } from "../utils/constant"
+import {  TMDB_APIS } from "../utils/constant"
 import { addSimilarMovies } from "../utils/slices/movieSlice";
 import { useEffect } from "react";
 
@@ -9,12 +9,9 @@ const useSimilarMovies = (movieId) => {
         dispatch(addSimilarMovies({ movie: null }));
         const getMovies = async () => {
             try {
-                const res = await fetch(
-                    TMDB_APIS.get_similar_movies.replace("{MOVIE_ID}", movieId),
-                    API_OPTIONS_TMDB
-                );
+                const res = await fetch(TMDB_APIS.get_similar_movies+movieId);
                 const data = await res.json();
-                const movies = data.results;
+                const movies = data.data.results;
                 dispatch(addSimilarMovies({ movie: movies }));
             } catch (error) {
                 console.error("Error fetching movies: ", error);

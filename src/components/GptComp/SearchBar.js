@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { SEARCH_ICON_IMAGE, TMDB_APIS, API_OPTIONS_TMDB } from '../../utils/constant';
+import { SEARCH_ICON_IMAGE, TMDB_APIS } from '../../utils/constant';
 import useLanguageFinger from '../../hooks/useLanguageFinger';
 import { LANG_TEXT } from '../../utils/langConst';
 import openai from '../../utils/openai';
@@ -14,11 +14,9 @@ const SearchBar = ({setShimmer}) => {
   async function searchMovieByName(name){
     setShimmer(true);
     let searchMovieApi = TMDB_APIS.get_search_result;
-    const fetchMovie = await fetch(
-      searchMovieApi + name,
-      API_OPTIONS_TMDB
-    );
-    const dataMovie = await fetchMovie.json();
+    const fetchMovie = await fetch(searchMovieApi + name);
+    let dataMovie = await fetchMovie.json();
+    dataMovie = dataMovie.data;
     setShimmer(false);
 
     return dataMovie;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { API_OPTIONS_TMDB, TMDB_APIS, YT_VIDEO_LINK } from '../../utils/constant';
+import { TMDB_APIS, YT_VIDEO_LINK } from '../../utils/constant';
 
 const VideoBackground = ({id}) => {
   const [video, setVideo] = useState(null);
@@ -7,11 +7,9 @@ const VideoBackground = ({id}) => {
     useEffect(()=>{
 
       const getMovieById = async () =>{
-        let getMovieVideos = await fetch(
-            TMDB_APIS.get_movie_video.replace('{MOVIE_ID}', id) ,
-             API_OPTIONS_TMDB
-        )
+        let getMovieVideos = await fetch(TMDB_APIS.get_movie_video + id)
         let videos = await getMovieVideos.json();
+        videos = videos.data;
         let selectedVid = videos[0];
         const filterTrailer = videos.results.filter( (video) => video.type === "Trailer");
     
