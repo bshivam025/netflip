@@ -15,12 +15,9 @@ const useNowPlayingMovies = (movieId) => {
             if (movieId) {
               api = TMDB_APIS.get_movie_by_id + movieId + "?";
             }
-            const res = await fetch(
-              api,
-              API_OPTIONS_TMDB
-            );
-            const data = await res.json();
-
+            const res = await fetch(api);
+            let data = await res.json();
+            data = data.data;
             let movies = [];
             if(movieId){
               movies.push(data);

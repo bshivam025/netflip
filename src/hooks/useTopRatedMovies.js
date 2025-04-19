@@ -14,10 +14,10 @@ const useTopRatedMovies = (movieId) => {
         const getMovies = async () => {
           try {
             const res = await fetch(
-              TMDB_APIS.get_top_rated_movies,
-              API_OPTIONS_TMDB
+              TMDB_APIS.get_top_rated_movies
             );
-            const data = await res.json();
+            let data = await res.json();
+            data = data.data;
             const movies = data.results;
             dispatch(addTopRatedMovies({ movie: movies }));
           } catch (error) {
